@@ -1,0 +1,217 @@
+<div class="content">
+    <div class="pageW bc bcolor3 h500">
+        <div class="fl w_left bcolor3">
+            <div class="bor_bot top_1 fl padl10">
+              <span>
+                <img src ="<%= image_url("com/laba.jpg") %>" alt="" width="">
+              </span>公告
+            </div>
+            <div class="fl top_2">
+                <ul>
+                    <li><a href="#">E采购平台隆重上线</a></li>
+                    <li><a href="#">欢迎佛山恒希陶瓷有限公司入驻E采购平台</a></li>
+                    <li><a href="#">欢迎佛山盛世名嘉陶瓷有限公司入驻E采购平台</a></li>
+                    <li><a href="#">欢迎佛山市来利达建材有限公司入驻E采购平台</a></li>
+                    <li><a href="#">欢迎广东昊晟陶瓷有限公司入驻E采购平台</a></li>
+                    <li><a href="#">欢迎佛山市新润丰贸易有限公司入驻E采购平台</a></li>
+                    <li><a href="#">欢迎佛全圣企业入驻E采购平台</a></li>
+                    <li><a href="#">欢迎佛山市金满堂建材有限公司入驻E采购平台</a></li>
+                    <li><a href="#">E采购平台入驻供应商突破100家</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="fl w_right">
+            <img src ="<%= image_url("com/back.jpg") %>" alt="" width="">
+        </div>
+    </div>
+    <div class="pageW bc ">
+      <div class="dynamic">
+          <div class="fl h66 bcolor4 padr10 padl10">
+                <span class="f24">最新招标动态</span>
+                <span>LATEST BIDDING DYNAMIC</span>
+          </div>
+          <div class="fr h66 bcolor4 padr10 padl10">
+                <span><a href="/Tender">查看更多&gt;&gt;</a></span>
+          </div>
+      </div>
+        <div class="dynamic2">
+            <div class="nav1 tc">
+                <span>招标商品</span>
+                <span>招标数量</span>
+                <span>收货地址</span>
+                <span>发布日期</span>
+                <span>剩余时间</span>
+                <span>投标量</span>
+            </div>
+            <div class="tc nav2">
+              <ul>
+		            <% @a=0 %>
+	              <% @products.each do |product| %>
+		            <% if @a < 10 %>
+		              <li style="white-space:nowrap">
+                    <span><%= product.name %></span>
+                    <span>1500sqm</span>
+                    <span>广东省佛山时禅城区</span>
+                    <span><%= product.created_at.strftime("%Y-%m-%d")%></span>
+                    <span>/</span>
+                    <span>30</span>
+                    <span class="actt cur">完成招标</span>
+                  </li>
+	              <% @a=@a+1 %>
+	              <% end %>
+		            <% end %>
+              </ul>
+            </div>
+        </div>
+    </div>
+    <div class="pageW bc ">
+        <div class="dynamic">
+            <div class="fl h66 bcolor4 padr10 padl10">
+                <span class="f24">名企新品推荐</span>
+                <span>NEW PRODUCT RECOMMENDATION</span>
+            </div>
+            <div class="fr h66 bcolor4 padr10 padl10">
+                <span><a href="/NewProduct">查看更多&gt;&gt;</a></span>
+            </div>
+        </div>
+        <div class="shop_1 tc">
+            <div class="shop_nv ">
+                <a href="#">
+                    <img src="<%= image_url("com/shop.jpg") %>" alt="" width="">
+                    <p>新品马赛克&nbsp;合格品&nbsp;300×300&nbsp;
+                      <span class="fcolor3">MX410000</span>
+                    </p>
+                </a>
+            </div>
+            <div class="shop_nv">
+                <a href="#">
+                    <img src="<%= image_url("com/shop.jpg") %>" alt="" width="">
+                    <p>新品马赛克&nbsp;合格品&nbsp;300×300&nbsp;<span class="fcolor3">MX410000</span></p>
+                </a>
+            </div>
+            <div class="shop_nv">
+                <a href="#">
+                    <img src="<%= image_url("com/shop.jpg") %>" alt="" width="">
+                    <p>新品马赛克&nbsp;合格品&nbsp;300×300&nbsp;<span class="fcolor3">MX410000</span></p>
+                </a>
+            </div>
+            <div class="shop_nv">
+                <a href="#">
+                    <img src="<%= image_url("com/shop.jpg") %>" alt="" width="">
+                    <p>新品马赛克&nbsp;合格品&nbsp;300×300&nbsp;<span class="fcolor3">MX410000</span></p>
+                </a>
+            </div>
+           <div class="shop_nv ">
+                <a href="#">
+                    <img src="<%= image_url("com/shop.jpg") %>" alt="" width="">
+                    <p>新品马赛克&nbsp;合格品&nbsp;300×300&nbsp;<span class="fcolor3">MX410000</span></p>
+                </a>
+            </div>
+            <div class="shop_nv">
+                <a href="#">
+                    <img src="<%= image_url("com/shop.jpg") %>" alt="" width="">
+                    <p>新品马赛克&nbsp;合格品&nbsp;300×300&nbsp;<span class="fcolor3">MX410000</span></p>
+                </a>
+            </div>
+            <div class="shop_nv">
+                <a href="#">
+                    <img src="<%= image_url("com/shop.jpg") %>" alt="" width="">
+                    <p>新品马赛克&nbsp;合格品&nbsp;300×300&nbsp;<span class="fcolor3">MX410000</span></p>
+                </a>
+            </div>
+            <div class="shop_nv">
+                <a href="#">
+                    <img src="<%= image_url("com/shop.jpg") %>" alt="" width="">
+                    <p>新品马赛克&nbsp;合格品&nbsp;300×300&nbsp;<span class="fcolor3">MX410000</span></p>
+                </a>
+            </div>
+            <div class="shop_nv">
+                <a href="#">
+                    <img src="<%= image_url("com/shop.jpg") %>" alt="" width="">
+                    <p>新品马赛克&nbsp;合格品&nbsp;300×300&nbsp;<span class="fcolor3">MX410000</span></p>
+                </a>
+            </div>
+            <div class="shop_nv">
+                <a href="#">
+                    <img src="<%= image_url("com/shop.jpg") %>" alt="" width="">
+                    <p>新品马赛克&nbsp;合格品&nbsp;300×300&nbsp;<span class="fcolor3">MX410000</span></p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="pageW bc ">
+        <div class="dynamic">
+            <div class="fl h66 bcolor4 padr10 padl10">
+                <span class="f24">尾货清仓甩卖</span>
+                <span>POOP CLEARANCE SALE</span>
+            </div>
+            <div class="fr h66 bcolor4 padr10 padl10">
+                <span><a href="/OldProduct">查看更多&gt;&gt;</a></span>
+            </div>
+        </div>
+        <div class="shop_1 tc">
+            <div class="shop_nv ">
+                <a href="#">
+                    <img src="<%= image_url("com/shop.jpg") %>" alt="" width="">
+                    <p>新品马赛克&nbsp;合格品&nbsp;300×300&nbsp;<span class="fcolor3">MX410000</span></p>
+                </a>
+            </div>
+            <div class="shop_nv">
+                <a href="#">
+                    <img src="<%= image_url("com/shop.jpg") %>" alt="" width="">
+                    <p>新品马赛克&nbsp;合格品&nbsp;300×300&nbsp;<span class="fcolor3">MX410000</span></p>
+                </a>
+            </div>
+            <div class="shop_nv">
+                <a href="#">
+                    <img src="<%= image_url("com/shop.jpg") %>" alt="" width="">
+                    <p>新品马赛克&nbsp;合格品&nbsp;300×300&nbsp;<span class="fcolor3">MX410000</span></p>
+                </a>
+            </div>
+            <div class="shop_nv">
+                <a href="#">
+                    <img src="<%= image_url("com/shop.jpg") %>" alt="" width="">
+                    <p>新品马赛克&nbsp;合格品&nbsp;300×300&nbsp;<span class="fcolor3">MX410000</span></p>
+                </a>
+            </div>
+           <div class="shop_nv ">
+                <a href="#">
+                    <img src="<%= image_url("com/shop.jpg") %>" alt="" width="">
+                    <p>新品马赛克&nbsp;合格品&nbsp;300×300&nbsp;<span class="fcolor3">MX410000</span></p>
+                </a>
+            </div>
+            <div class="shop_nv">
+                <a href="#">
+                    <img src="<%= image_url("com/shop.jpg") %>" alt="" width="">
+                    <p>新品马赛克&nbsp;合格品&nbsp;300×300&nbsp;<span class="fcolor3">MX410000</span></p>
+                </a>
+            </div>
+            <div class="shop_nv">
+                <a href="#">
+                    <img src="<%= image_url("com/shop.jpg") %>" alt="" width="">
+                    <p>新品马赛克&nbsp;合格品&nbsp;300×300&nbsp;<span class="fcolor3">MX410000</span></p>
+                </a>
+            </div>
+            <div class="shop_nv">
+                <a href="#">
+                    <img src="<%= image_url("com/shop.jpg") %>" alt="" width="">
+                    <p>新品马赛克&nbsp;合格品&nbsp;300×300&nbsp;<span class="fcolor3">MX410000</span></p>
+                </a>
+            </div>
+            <div class="shop_nv">
+                <a href="#">
+                    <img src="<%= image_url("com/shop.jpg") %>" alt="" width="">
+                    <p>新品马赛克&nbsp;合格品&nbsp;300×300&nbsp;<span class="fcolor3">MX410000</span></p>
+                </a>
+            </div>
+            <div class="shop_nv">
+                <a href="#">
+                    <img src="<%= image_url("com/shop.jpg") %>" alt="" width="">
+                    <p>新品马赛克&nbsp;合格品&nbsp;300×300&nbsp;<span class="fcolor3">MX410000</span></p>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<div style="height:40px;background:#f6f6f6;"></div>

@@ -1,0 +1,162 @@
+<!--content开始-->
+<div class="content">
+  <div class="pageW bc mt20">
+  <img src="<%= image_url("com/register_01.jpg") %>" alt="">
+</div>
+<div class="pageW bc mt20 bcolor3">
+<div class="tc bcolor1 reg_h40 fcolor2">最新加盟报</div>
+  <div class="reg_bor">
+    <div class="tc reg_h40 fcolor1">E采购平台累计加盟1688家企业</div>
+      <div class="reg_cont pad20 ">
+      <ul>
+        <!-- Start Data -->
+        <% @providers.each do |provider| %>
+        <li>
+          <span>
+            <%= provider.company_name %>
+          </span>
+          <span class="fr">
+            <%= provider.created_at.to_date %>
+          </span>
+        </li> 
+        <% end %>
+        <!-- End Data -->
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="pageW bc mt20">
+<img src="<%= image_url("com/register_02.jpg") %>" alt="">
+</div>
+<div class="pageW bc mt20">
+<img src="<%= image_url("com/register_03.jpg") %>" alt="">
+</div>
+<div class="pageW bc mt20 bcolor3">
+<div class="tc bcolor1 reg_h40 fcolor2">立即申请成为供应商</div>
+<div class="reg_bor">
+  <div class="reg_cont2 pad20 ">
+    <%= form_for (@provider) do |f| %>
+      <li>
+        <p class="reg_sqbCon">
+          <span class="fcolor_red">*</span>
+          <%= f.label :公司名称 %><br>
+        </p>
+        <%= f.text_field :company_name, class: 'reg_input' %>
+      </li>
+	<p style="color:red;"><%= error(@provider, :company_name, "公司名称")%></p>
+      <li>
+        <p class="reg_sqbCon">
+          <span class="fcolor_red">*</span>
+          <%= f.label :主营 %><br>
+        </p>
+        <%= f.select :category,
+         ['瓷砖','卫浴','马赛克','五金'],
+         :prompt => '主营', :class => 'ml10' 
+        %>	
+      </li>
+      <p style="color:red;"><%= error(@provider, :category, "主营")%></p>
+      <li>
+        <p class="reg_sqbCon">
+          <span class="fcolor_red">*</span>
+          <%= f.label :所在地区 %><br>
+        </p>
+          <%= f.select :area, [ '北京', '安徽', '福建',
+          '甘肃', '广东', '广西','贵州', '海南', '河北',
+          '河南', '黑龙江', '湖北','湖南','吉林','江苏',
+          '江西','辽宁','内蒙古','宁夏','青海','山东',
+          '山西','陕西','上海','四川','天津','西藏',
+          '新疆','云南','浙江','重庆','香港','澳门','台湾' 
+          ], :prompt => '地区' %>
+      </li>
+      <p style="color:red;"><%= error(@provider, :area, "地区")%></p>
+      <li>
+        <p class="reg_sqbCon">
+          <span class="fcolor_red">*</span>
+          <%= f.label :详细地址 %><br>
+        </p>
+        <%= f.text_field :address, class: 'reg_input' %>
+      </li>
+      <p style="color:red;"><%= error(@provider, :address, "详细地址")%></p>
+      <li>
+        <p class="reg_sqbCon">
+          <span class="fcolor_red">*</span>
+          <%= f.label :主要联系人 %><br>
+        </p>
+        <%= f.text_field :contact_name, class: 'reg_input' %>
+      </li>
+      <p style="color:red;"><%= error(@provider, :contact_name, "主要联系人")%></p>
+      <li>
+        <p class="reg_sqbCon">
+          <span class="fcolor_red">*</span>
+          <%= f.label :职位 %><br>
+        </p>
+        <%= f.text_field :contact_title, class: 'reg_input' %>
+      </li>
+      <p style="color:red;"><%= error(@provider, :contact_title, "职位")%></p>
+      <li>
+        <p class="reg_sqbCon">
+          <span class="fcolor_red">*</span>
+          <%= f.label :手机号码 %><br>
+        </p>
+        <%= f.text_field :mobile, class: 'reg_input' %>
+      </li>
+      <p style="color:red;"><%= error(@provider, :mobile, "手机号码")%></p>
+      <li>
+        <p class="reg_sqbCon">
+          <span class="fcolor_red">*</span>
+          <%= f.label :固定电话号码 %><br>
+        </p>
+        <%= f.text_field :telephone, class: 'reg_input' %>
+      </li>
+      <p style="color:red;"><%= error(@provider, :telephone, "固定电话号码")%></p>
+      <li>
+        <p class="reg_sqbCon">
+          <span class="fcolor_red">*</span>
+          <%= f.label :传真机 %><br>
+        </p>
+        <%= f.text_field :fax, class: 'reg_input' %>
+      </li>
+      <p style="color:red;"><%= error(@provider, :fax, "传真机")%></p>
+      <li>
+        <p class="reg_sqbCon"><%= f.label :ＱＱ号码 %></p>
+        <%= f.text_field :qq, class: 'reg_input' %>
+      </li>
+      <li style="height: 250px">
+        <p class="reg_sqbCon">
+        <%= f.label :相关照片 %><br>
+                  
+        <div class="reg_p"> 
+            <%= f.fields_for :photos do |p| %>
+              <div style="margin-top: 17px;">
+                <% if "license" == p.object.tag %>
+                  <div>添加公司营业执照</div>
+                <% else %>
+                  <div>添加公司照片</div>
+                <% end %>
+                <%= p.file_field :image %>
+                <%= p.hidden_field :tag, value: p.object.tag %>
+              </div>
+            <% end %>
+        </div>
+        </p>
+      </li>
+      <div class="tc">
+        <%= f.hidden_field :status, value: '未审核' %>
+        <%= f.submit "提交入驻申请", style: 'font-size: 16px;color: #fff;
+                                             border-radius: 6px;background: #3eb692;
+                                             padding: 10px 70px;'
+         %>
+      </div>
+      <li>
+        <div class="tc mt20">
+          <p>提交供应商入驻申请后楼兰采购部专员会主动拨打手机号码与您联系</p>
+          <p><%= link_to '返回首頁', root_path, class: "fcolor5" %></p>
+        </div>
+      </li>
+    <% end %>
+            </div>
+        </div>
+    </div>   
+</div>
+<div style="clear:both;" class="mb20"></div>
+<div style="height:40px;background:#f6f6f6;"></div>

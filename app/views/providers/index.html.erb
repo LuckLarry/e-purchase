@@ -1,0 +1,128 @@
+<font color="#3c763d" size="5"><p class="tc mt20" id="notice"><%= notice %></p></font>
+<div class="content">
+    <div class="pageW bc mt20">
+     
+        <div class="fr user_right">
+            <div class="user_cont3 fcolor2 user_right_w fl f12">
+               <%= form_tag providers_path, :method => 'get' do %>
+                    <ul>
+                        <li>
+                            <p class="user_sqbCon">供应商名称</p>
+                            <%= text_field_tag :search, params[:search], class: 'user_input' %>
+                        </li>
+                        <li>
+                            <p class="user_sqbCon">审核状态</p>
+                            <%= select_tag(:status,
+                                options_for_select([ ['选择',""],
+                                                     ['未审核',"未审核"],
+                                                     ['已审核',"已审核"]
+                                                   ]),{:class => 'user_cselect'}
+                            )%>
+                        </li>
+                    </ul>
+                    <div class="user_submit fr cur">
+                      <%= submit_tag "搜索", class: "btn btn-default" %>
+                    </div>
+               <% end %>
+            </div>
+            <div class="fcolor5 user_right_w1 fl user_cont4">
+                  <% @providers.each do |provider| %>
+
+                <ul class="u_supplier mt20 w100">
+                    <li class="supplier_w500 fl">
+                        <div class="w100 fl">
+                    			<% if provider.company_name.to_s.blank? %>
+                    				<span>****陶瓷有限公司</span>
+                    			<% else %>
+                    			  <%= provider.company_name %>
+                            (<%= provider.status %>)
+                    			<% end %>
+                          <% if  provider.status == "未审核" %>
+                            <span class="fr">申请提交日期:
+                              <%= provider.created_at.to_date %>
+                            </span>
+                          <% else %>
+                            <% if provider.product.group(:status).count["已上架"] == nil %>
+                              <span class="fr">上架产品数:0</span>
+                            <% else %>
+                              <span class="fr">上架产品数:
+                                <%= provider.product.group(:status).count["已上架"] %>
+                              </span>
+                            <% end %>
+                          <% end %>
+
+                          <% if @pass_product.blank? %>
+                          <% else %>
+                          <% end %>
+
+                        </div>
+                        <div class="w100 fl">
+                          <span>主营:</span>
+                            <% if provider.category.to_s.blank? %>
+                       	      <span>瓷砖</span>
+                            <% else %>
+			                       <%= provider.category %>
+                            <% end %>
+                        </div>
+                        <div class="w100 fl">
+                          <span>地址:</span>&nbsp;&nbsp
+                          <% if provider.address.to_s.blank? %>
+                            <span>广东佛山市禅城区季华二路000号</span>
+                          <% else %>
+                            <%= provider.address %>
+                          <% end %>
+                        </div>
+
+                        <div class="w100 fl">
+                          <span>主要联系人:</span>
+                  			    <% if provider.contact_name.to_s.blank? %>
+                  			      <span>张三</span>
+                  			    <% else %>
+                  			      <%= provider.contact_name %>
+                            <% end %>
+
+                          <span class="ml30">职位:</span>
+                            <% if provider.contact_name.to_s.blank? %>
+                              <span>张三</span>
+                            <% else %>
+                              <%= provider.contact_name %>
+                            <% end %>
+
+                      	     <% if provider.contact_title.to_s.blank? %>
+                      			  <span>经理</span>
+                      			<% else %>
+                      			  <%= provider.contact_title %>
+                      			<% end %>
+
+                          <span class="fr">手机号码:<a>
+                      			<% if provider.mobile.to_s.blank? %>
+                      			  <span>156########</span>
+                      			<% else %>
+                      			  <%= provider.mobile %></a></span>
+                      			<% end %>
+ 			</div>
+                    </li>
+                    <li class="supplier_w350 fl">
+                      <% license_image = provider.photos.where(tag: "license").first.try(:image) %>
+                      <% if license_image.blank? %>
+                        <%= image_tag image_url("com/supplier_02.jpg") %>
+                      <% else %>
+                        <%= image_tag license_image.thumb.url, width: '170', height: '120' %>
+                      <% end %>
+                    </li>
+
+                    <li class="mt10 fl tc pt">
+                      <p><%= link_to '审核', edit_provider_path(provider) %></p>
+                    </li>
+
+                </ul>
+                  <% end %>
+
+                <div class="fr pag mt20 mr20">
+                  <p class="bcolor5"><%= will_paginate @providers %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="clear:both;" class="mb20"></div>

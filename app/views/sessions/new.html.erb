@@ -1,0 +1,49 @@
+<%= stylesheet_link_tag 'application', '/assets/common' %>
+<style>
+  .login_left{width:670px;}
+  .login_right{width:400px;height:398px;padding:20px;font-size:20px;color:#646464;}
+  .login_right input{width:300px;height:40px;margin-top:20px;}
+  .submit{width:73px;border-radius: 3px;color:#fff;}
+  .fzlog{font-size:18px;color:#646464;}
+  .login_right a,.fzlog a{color:#646464;}
+</style>
+<div class="bcolor3">
+  <div class="pageW mt100 bc">
+    <div class="fl">
+    <a href="/">
+      <img src="<%= image_url("com/footer_ecg.jpg") %>" alt="">
+    </a>
+    </div>
+    <div class="mt10 bor3 fl pageW pad3">
+      <div class="fl login_left">
+        <img src="<%= image_url("com/login_big.jpg") %>" alt="">
+      </div>
+      <div class="login_right fl fzlog">
+        <div class="mt70 ">如有账号请登陆</div>
+        <%= form_tag('/login') do %>
+          <div>
+            <%= text_field_tag :username, params[:username], placeholder: "请输入已分配帐号",class: 'f18' %>
+          </div>
+          <div>
+            <%= password_field_tag :password, params[:password], placeholder: "请输入密码" ,class: 'f18'%>
+          </div>
+          <% if %>
+            <p id="notice"><%= flash[:alert] %></p>
+          <% end %>
+          <div>
+            <%= submit_tag "登陆" ,class: 'submit bcolor5 bor2',style: 'width:141px;height:37px;margin-top:20px'%>
+          </div>
+        <div class="mt10 f16">
+	   <%= check_box_tag :remember_me, 1, params[:remember_me],style: 'width:14px;height:14px;position:relative;margin:2px;top:2px;'%>记住密码
+          &nbsp;&nbsp;&nbsp;&nbsp;<a href="#">忘记密码</a>&nbsp;|&nbsp;
+          <%= link_to '立即入驻', new_provider_path %>
+        </div>
+        <% end %>                
+      </div>
+    </div>
+  </div>
+  <div class="tc cb padt20 fzlog">
+    <p><a style="color:#121615;" href="/">楼兰e采购首页</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a style="color:#121615;" href="#">联系客服</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:window.external.AddFavorite('http://www.51ecg.com','e采购')">收藏本页</a></P>
+    <p>OPYRIGHT © 2013-2016 佛山市楼兰家居用品有限公司 版权所有  <a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action">粤ICP备12034873号-10</a></p>
+  </div>
+</div>

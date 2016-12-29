@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<title>产品管理-产品详情</title>
+<link href="../assets/stylesheets/common.css" rel="stylesheet" type="text/css">
+
+<link href="../assets/stylesheets/users.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../assets/javascripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="../assets/javascripts/cloud-zoom.1.0.2.js"></script>
+<script type="text/javascript" src="../assets/javascripts/common.js"></script>
+</head>
+<body>
+<!--content开始-->
+<div class="content">
+    <div class="pageW bc mt20 ">
+        <div class="fl user_left ">
+            <div class="fl user_top bor2">
+                <div class="user_top2 tc bcolor5 fcolor2">产品管理</div>
+            </div>
+            <div class="fl user_top bor2 mt20">
+                <div class="user_top2 tc  fcolor4">审核管理</div>
+            </div>
+            <div class="fl user_top bor2 mt20">
+                <div class="user_top2 tc  fcolor4">供应商管理</div>
+            </div>
+        </div>
+        <div class="fr user_right">
+            <div class="fcolor5 user_right_w fl mb10">产品管理&nbsp;&gt;产品详情 <span class="fr"><a href="#" class="fcolor4">编辑</a></span></div>
+            <div class="user_cont5 fcolor5 user_right_w fl bor4 pad10" style="height:600px;">
+                <div class="proDetail_pic proDetail_pictd">
+                    <div id="wrap" style="top:0px;z-index:9999;position:relative;">
+                        <a href="http://api.llhome.com//pLoad/20160224184246865/0-1193959466.jpg" class="cloud-zoom" rel="adjustX:15, adjustY:-1" style="width:420px; height:420px;">
+                            <img class="lazy" src="http://api.llhome.com//pLoad/20160224184246865/0-1193959466.jpg" data-original="http://api.llhome.com//pLoad/20160224184246865/0-1193959466.jpg" width="420" height="320" alt="" id="pro_picB" style="display: inline;">
+                        </a>
+
+                    </div>
+                    <div class="cf">            
+                        <div class="proPicShow proPicShowtd cf" id="user_recommendidx">
+                            <div class="proPicShow_mask bc cf">
+                                <div class="proPicShow_pics_out">
+                                    <ul class=" userPicShow_pics" style="left: 0px;">
+                                        <li>
+                                                <img src="http://api.llhome.com//pLoad/20160224184037202/0-1193959466_s.jpg" data-src="http://api.llhome.com//pLoad/20160224184037202/0-1193959466.jpg" width="862" height="712" title="" alt="8">
+                                                                                                    </li><li>
+                                                <img src="http://api.llhome.com//pLoad/20160224184031253/0-1193959466_s.jpg" data-src="http://api.llhome.com//pLoad/20160224184031253/0-1193959466.jpg" width="862" height="712" title="" alt="7">
+                                                                                                    </li><li>
+                                                <img src="http://api.llhome.com//pLoad/20160224184026315/0-1193959466_s.jpg" data-src="http://api.llhome.com//pLoad/20160224184026315/0-1193959466.jpg" width="862" height="712" title="" alt="6">
+                                                                                                    </li><li>
+                                                <img src="http://api.llhome.com//pLoad/20160224184022497/0-1193959466_s.jpg" data-src="http://api.llhome.com//pLoad/20160224184022497/0-1193959466.jpg" width="862" height="712" title="" alt="5">
+                                                                                                    </li><li>
+                                                <img src="http://api.llhome.com//pLoad/20160224184028179/0-1193959466_s.jpg" data-src="http://api.llhome.com//pLoad/20160224184028179/0-1193959466.jpg" width="862" height="712" title="" alt="4">
+                                                    
+                                                                                                    </li><li>
+                                                <img src="http://api.llhome.com//pLoad/20160224184031253/0-1193959466_s.jpg" data-src="http://api.llhome.com//pLoad/20160224184031253/0-1193959466.jpg" width="862" height="712" title="" alt="7">
+                                                                                                    </li><li>
+                                                <img src="http://api.llhome.com//pLoad/20160224184026315/0-1193959466_s.jpg" data-src="http://api.llhome.com//pLoad/20160224184026315/0-1193959466.jpg" width="862" height="712" title="" alt="6">
+                                                                                                    </li><li>
+                                                <img src="http://api.llhome.com//pLoad/20160224184022497/0-1193959466_s.jpg" data-src="http://api.llhome.com//pLoad/20160224184022497/0-1193959466.jpg" width="862" height="712" title="" alt="5">
+                                                                                                    </li><li>
+                                                <img src="http://api.llhome.com//pLoad/20160224184028179/0-1193959466_s.jpg" data-src="http://api.llhome.com//pLoad/20160224184028179/0-1193959466.jpg" width="862" height="712" title="" alt="4">
+                                                                                                    </li>                                    </ul>
+                                </div>
+                            </div>
+                            <div class="userPicShow_vrew userPicShow_prev userPicShow_btnEnable" title="这是第一个" onselectstart="return false;"></div>
+                            <div class="userPicShow_vrew userPicShow_next" title="下一个" onselectstart="return false;"></div>
+
+
+                        </div>   
+                    </div>   
+                    
+                    <script>
+                                //产品图片展示
+                                $(function(){
+                                var count = 0
+                                        $(".collect").click(function(){
+                                count++;
+                                        $(".collect span").next().text(count);
+                                });
+                                });
+                                $(function(){
+                                mgCloudZoom(jQuery);
+                                        //宝贝小图展示  
+                                        $(".userPicShow_pics li img").click(function(){
+                                var src = $(this).attr("data-src")
+                                        $("#pro_picB").attr("src", src);
+                                        $("#pro_picB").parent().attr("href", src);
+                                        mgCloudZoom(jQuery);
+                                });
+                                });
+                                MGShow("user_recommendidx", 360, 72);</script> 
+                </div>
+                <div class="fl pad20 conte">
+                    <div class="padl20">产品名称:</div>
+                    <div class="">
+                        <ul>
+                            <li class="w_350">价格:<span class="fcolor3">1.57</span>元/片</li>
+                            <li>型号:LXD123465</li>
+                            <li>产品规格:LXD123456</li>
+                            <li>起批量:3000片</li>
+                            <li>供货量:1000片</li>
+                            <li>产品品牌:玛奇朵</li>
+                            <li>产品状态:新品</li>
+                            <li>联系人:楼兰小儿</li>
+                            <li>联系电话:13000000000</li>
+                            <li class="w_350">供应商:佛山楼兰家居用品有限公司</li>
+                            <li>其他参数:<textarea type="text" class="user_input" style="width:135%;border-radius: 10px;margin-top: 20px;height:150px;resize: none;padding:20px;position:relative;top:-50px;left:85px;" name="company_name" >例如 颜色:红色，质面:哑面，尺寸:300×300mm</textarea></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--content结束-->
+<!--footer结束-->
+</body>
+</html>

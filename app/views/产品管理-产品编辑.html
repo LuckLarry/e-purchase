@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<title>产品管理-产品编辑</title>
+<link href="../assets/stylesheets/common.css" rel="stylesheet" type="text/css">
+<link href="../assets/stylesheets/index.scss" rel="stylesheet" type="text/css">
+<link href="../assets/stylesheets/zhaobiao.css" rel="stylesheet" type="text/css">
+<link href="../assets/stylesheets/users.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../assets/javascripts/jquery-1.10.2.min.js"></script> 
+</head>
+<body>
+    <script>
+      function getImg(target,name,value){
+            document.getElementById(name).src =  window.URL.createObjectURL(target.files.item(0));
+        };
+     // 创建删除函数
+     function del(obj){
+        var tr = obj.parentNode.parentNode;
+        tr.parentNode.removeChild(tr);
+     }
+
+
+    </script>
+
+<!--content开始-->
+<div class="content">
+    <div class="pageW bc mt20 ">
+        <div class="fl user_left ">
+            <div class="fl user_top bor2">
+                <div class="user_top2 tc bcolor5 fcolor2">产品管理</div>
+            </div>
+            <div class="fl user_top bor2 mt20">
+                <div class="user_top2 tc  fcolor4">审核管理</div>
+            </div>
+            <div class="fl user_top bor2 mt20">
+                <div class="user_top2 tc  fcolor4">供应商管理</div>
+            </div>
+        </div>
+        <div class="fr user_right">
+            <div class="fcolor5 user_right_w fl mb10">产品管理&nbsp;&gt;产品编辑</div>
+            <div class="user_cont5 fcolor5 user_right_w fl bor4 pad10">
+                <ul>
+                    <li>
+                        <p class="user_sqbCon"><span class="fcolor_red">*</span>公司名称:</p>&nbsp;&nbsp;科凡有限公司
+                    </li>
+                    <li>
+                        <p class="user_sqbCon"><span class="fcolor_red">*</span>产品分类:</p>
+                        <select class="user_cselect" name="province" id="selProvinces2" onchange="region.changed(this, 2,'selCities2');">
+                            <option value="">瓷砖</option>
+                            <option value="2" >基础建材</option>
+                        </select>
+                        <select class="user_cselect" name="province" id="selProvinces2" onchange="region.changed(this, 2,'selCities2');">
+                            <option value="">木纹砖</option>
+                            <option value="2" >仿古砖</option>
+                        </select>
+                    </li>
+                    <li>
+                        <p class="user_sqbCon"><span class="fcolor_red">*</span>产品状态:</p>
+                        <input type="checkbox" class="ml10" name="state" value="0">常规
+                        <input type="checkbox" class="ml10" name="state" value="1">新品
+                        <input type="checkbox" class="ml10" name="state" value="2">尾货
+                    </li>
+                    <li>
+                        <p class="user_sqbCon"><span class="fcolor_red">*</span>产品名称:</p>
+                        <input type="text" class="user_input" name="company_name"  value="五彩缤纷">
+                    </li>
+                    <li>
+                        <p class="user_sqbCon"><span class="fcolor_red">*</span>产品型号:</p>
+                        <input type="text" class="user_input" name="company_name"  value="LXD132465">
+                    </li>
+                    <li>
+                        <p class="user_sqbCon"><span class="fcolor_red">*</span>产品单位:</p>
+                        <input type="text" class="user_input" name="company_name"  value="片">
+                    </li>
+                    <li>
+                        <p class="user_sqbCon"><span class="fcolor_red">*</span>产品价格:</p>
+                        <input type="text" class="user_input" name="company_name"  value="2.67"><span class="fcolor7">￥</span>
+                    </li>
+                    <li>
+                        <p class="user_sqbCon"><span class="fcolor_red">*</span>起批量:</p>
+                        <input type="text" class="user_input" name="company_name"  value="300">
+                    </li>
+                    <li>
+                        <p class="user_sqbCon"><span class="fcolor_red">*</span>供货量:</p>
+                        <input type="text" class="user_input" name="company_name"  value="30000">
+                    </li>
+                    <li>
+                        <p class="user_sqbCon"><span class="fcolor_red">*</span>品牌:</p>
+                        <input type="text" class="user_input" name="company_name"  value="玛奇朵">
+                    </li>
+                    <li>
+                        <p class="user_sqbCon"><span class="fcolor_red">*</span>产品规格:</p>
+                        <input type="text" class="user_input" name="company_name"  value="300×300">
+                    </li>
+                    <li>
+                    
+                       <p class="user_sqbCon"><span class="fcolor_red">*</span>其他参数:</p>
+                       <textarea type="text" class="user_input" style="width:60%;border-radius: 10px;margin-top: 20px;height:150px;resize: none;padding:20px" name="company_name" >例如 颜色:红色，质面:哑面，尺寸:300×300mm</textarea><br>
+                    </li>
+                    <li style="border-bottom-color:#fff;">
+                           <p class="user_sqbCon"><span class="fcolor_red">*</span>相关照片:</p>
+                        <div class="ml70 user_po">
+                            <div id="add_1"></div>
+                            <div class="user_p user_pos" id="btn">
+                            <div >
+                                <img id="company_pic_2" src='../assets/images/com/supplier_03.jpg' width="100" height="100"  />
+                               </div>
+                            </div>
+
+                        </div>
+                           <div class=" user_submit"><span class="cur">保存</span></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+   
+    $(document).ready(function(){
+        var num=0;
+        $("#btn").click(function(){
+            num = num+1;
+    var s = 
+            "<div class='user_p len'>"+
+                " <div >"+
+                   "<img id='company_pic_"+num+"' src='../assets/images/com/register_04.jpg' width='100' height='100'  />"+
+                 "</div>"+
+                 "<div class='mt10 ml10'>"+
+                   "<img src='../assets/images/com/user_btn03.jpg' onclick=$('input[name=company_zhizhao_"+num+"]').click(); />"+
+                 "<a onclick=del(this)><img src='../assets/images/com/user_close.png' class='close'></a>"+
+                 "</div>"+
+                   "<div style='margin-top: 10px;'>"+
+                       "<INPUT TYPE='FILE' NAME='company_zhizhao_"+num+"' id='pic_"+num+"' dynsrc='' SIZE='20' onchange=getImg(this,'company_pic_"+num+"','pic_"+num+"') style='border:0'>"+
+                   "</div>"+
+                   
+                 "</div>";  
+            if($(".len").length<6){              
+                $("#add_1").append(s);
+            }else{
+                alert("最多添加6张图片");
+            }
+        });
+     });
+</script>
+<!--content结束-->
+<!--footer结束-->
+</body>
+</html>

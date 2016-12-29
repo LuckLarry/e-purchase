@@ -1,0 +1,65 @@
+<%= form_for(@product) do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :产品分类 %><br>
+    <%= f.text_field :category %>
+  </div>
+  <div class="field">
+    <%= f.label :产品状态 %><br>
+    <%= f.text_field :product_status %>
+  </div>
+  <div class="field">
+    <%= f.label :产品名称 %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :产品型号 %><br>
+    <%= f.text_field :number %>
+  </div>
+  <div class="field">
+    <%= f.label :产品单位 %><br>
+    <%= f.text_field :unit %>
+  </div>
+  <div class="field">
+    <%= f.label :产品价格 %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :起订量 %><br>
+    <%= f.text_field :start_volume %>
+  </div>
+  <div class="field">
+    <%= f.label :供货量 %><br>
+    <%= f.text_field :volume %>
+  </div>
+  <div class="field">
+    <%= f.label :品牌 %><br>
+    <%= f.text_field :brand %>
+  </div>
+  <div class="field">
+    <%= f.label :产品规格%><br>
+    <%= f.text_field :spec %>
+  </div>
+  <div class="field">
+    <%= f.label :备注填写 %><br>
+    <%= f.text_field :mark %>
+  </div>
+  <div class="field">
+    <%= f.label :产品图片 %><br>
+    <%= f.text_field :image %>
+  </div>
+  <div class="actions">
+    <%= f.submit "产品上架" %>
+  </div>
+<% end %>

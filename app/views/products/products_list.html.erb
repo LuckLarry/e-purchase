@@ -1,0 +1,95 @@
+<!--content开始-->
+<div class="content">
+    <div class="pageW bc mt20">
+        <div class="fr user_right">
+            <div class="fcolor5 user_right_w fl mb10">产品管理&nbsp;&gt;上架产品</div>
+            <div class="user_cont3 fcolor2 user_right_w fl f12">
+               <%= form_tag products_list_url, :method => 'get' do %>
+                 <ul>
+                   <li>
+                            <p class="user_sqbCon">产品分类:</p>
+                            <%= select_tag(:category, 
+                                options_for_select([ ['选擇',""],
+                                                     ['瓷砖', "瓷砖"], 
+                                                     ['卫浴', "卫浴"],
+                                                     ['马赛克', "马赛克"],
+                                                     ['五金', "五金"]
+                                                   ]),{:class => 'user_cselect'}
+                            )%>
+                   </li>
+                   <li>
+                            <p class="user_sqbCon">产品状态:</p>
+                            <%= select_tag(:product_status,
+                                options_for_select([ ['选擇',""],
+                                                     ['新品', "新品"],
+                                                     ['常规', "常规"],
+                                                     ['尾货', "尾货"]
+                                                   ]),{:class => 'user_cselect'}
+                            )%>
+                   </li>
+                   <li>
+                     <p class="user_sqbCon">产品名称</p>
+                     <%= text_field_tag :search, params[:search], class: 'user_input' %>
+                   </li>
+                 </ul>
+                 <div class="user_submit fr cur">
+                   <%= submit_tag "搜索", :name => nil, class: "btn btn-default" %>
+                 </div>
+               <% end %>
+            </div>
+            <div class="fcolor5 user_right_w1 fl mt10 user_cont4">
+              <div class="row">
+              <% @products.each do |product| %>
+                <div class="col-md-4 col-xs-4 mb20">
+                  <div class="card" style="border:1px solid #ccc;">
+                    <div class="card-block pad10">
+                      <h4 class="card-title mb10" style="font-size:20px;">
+                        <% if product.name.blank? %>
+                          未填产品名称
+                        <% else %>
+                          <%= product.name %>
+                        <% end%>
+                      </h4>
+                      <h6 class="card-subtitle text-muted" style="font-size:15px;">
+                        <% if product.category.blank? %>
+                          未填产品分类
+                        <% else %>
+                          <%= product.category %>
+                        <% end %>
+                      </h6>
+                    </div>
+                    <% product_image = product.photos.where(tag: "Product_A").first.try(:image) %>
+                    <% if product_image.blank? %>
+                      <img src="<%= image_url("com/product_sample.jpg") %>" width="100%" />
+                    <% else %>
+                      <%= image_tag product_image.thumb.url, width: '100%' %>
+                    <% end %>
+                    <div class="card-block ml20">
+                      <p class="card-text">
+                        <% if product.price.blank? %>
+                          未填价格<br>
+                        <% else %>
+                          价格:￥<%= product.price%><br>
+                        <% end %>
+                        <% if product.volume %>
+                          未填供货量<br>
+                        <% else %>
+                          供货量:<%= product.volume%><br>
+                        <% end %>
+                        产品状态:<%= product.product_status%><br>
+                        发布时间:<%= product.created_at.to_date%>
+                      </p>
+                    </div>
+                  </div>
+                  </div>
+              <% end %>
+              </div>
+              <div class="fr pag mt20 mr20">
+                <p class="bcolor5"><%= will_paginate @products %></p>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="clear:both;" class="mb20"></div>
+<!--content结束-->

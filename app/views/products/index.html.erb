@@ -1,0 +1,105 @@
+<!--content开始-->
+<font color="#3c763d" size="5"><p class="tc mt20" id="notice"><%= notice %></p></font>
+<div class="content">
+  <div class="pageW bc mt20">
+    <div class="fr user_right">
+      <%= form_tag products_path, :method => 'get' do %>
+          <div class="user_cont3 user_right_w fl f12">  
+            <ul>
+              <li style="width: 620px;">
+                <p class="user_sqbCon fcolor2">日期</p>
+                  <%= select_date(nil, :prefix => 'start_date',prompt: {day: '请选择', month: '请选择', year: '请选择'},default: {day: '请选择', month: '请选择', year: '请选择'}) %>
+                  <p class="user_sqbCon fcolor2">-</p>
+                  <%= select_date(nil, :prefix => 'end_date',prompt: {day: '请选择', month: '请选择', year: '请选择'},default: {day: '请选择', month: '请选择', year: '请选择'}) %>
+              </li>
+              <li>
+                <p class="user_sqbCon fcolor2">产品名称</p>
+                <%= text_field_tag :search, params[:search], class: 'user_input' %>
+              </li>
+            </ul>
+          </div>
+          <div class="user_cont3 user_right_w fl mt10 f12">
+            <ul>
+              <li>
+                <p class="user_sqbCon fcolor2">供应商</p>
+                <%= text_field_tag :company_name, params[:company_name], class: 'user_input' %>
+              </li>
+              <li>
+                <p class="user_sqbCon fcolor2">受理状态</p>
+                <%= select_tag(:status,
+                    options_for_select([ ['选择',""],
+                                         ['未上架',"未上架"],
+                                         ['已上架',"已上架"]
+                                       ]),{:class => 'user_cselect'}
+                )%>
+                </select>
+              </li>
+              <li>
+                <p class="user_sqbCon fcolor2">申请类型</p>
+                <%= select_tag(:roles,
+                       options_for_select([ ['选择',""],
+                                            ['产品上架申请',"产品上架申请"],
+                                            ['产品下架申请',"产品下架申请"]
+                                         ]),{:class => 'user_cselect'}
+                )%>
+              </li>
+            </ul>
+            <div class=" user_submit fr cur">
+              <%= submit_tag "搜索", class: "btn btn-default" %>
+            </div>              
+          </div>
+        <% end %>
+      <div>
+        <div class="row">
+        <!-- Rails Display Data From the Database Start -->
+        <% @products.each do |product| %>
+        <div class="col-md-4 col-xs-4 mb20 mt20">
+        <ul class="card" style="border:1px solid #ccc;">
+          <div class="card-block pad10">
+            <h4 class="card-title mb10" style="font-size:20px;color:#838383;">
+              <% if product.provider.company_name.blank? %>
+                未填入公司名称
+              <% else %>
+                <%= product.provider.company_name %>
+              <% end %>
+            </h4>
+            <h6 class="card-subtitle text-muted" style="font-size:15px;">
+              <% if product.name.blank? %>
+                未填入产品名称
+              <% else %>
+                <%= product.name %>
+              <% end%>
+            </h6>
+          </div>
+          <% product_image = product.photos.where(tag: "Product_A").first.try(:image) %>
+          <% if product_image.blank? %>
+            <img src="<%= image_url("com/product_sample.jpg") %>" width="100%" />
+          <% else %>
+            <%= image_tag product_image.thumb.url, width: '100%' %>
+          <% end %>
+          <div class="card-block ml20">
+            <p class="card-text" style="color:#838383;">
+              <% if product.price.blank? %>
+                产品价钱:￥未填<br>
+              <% else %>
+                产品价钱:￥<%= product.price %><br>
+              <% end %>
+              产品发布时间:<%= product.created_at.to_date %><br>
+              受理状态:<%= product.status %>
+            </p>
+            <%= link_to '查看', edit_product_path(product), class: 'card-link',style: 'color:#838383;' %>
+          </div>
+        </ul>
+        </div>
+        <% end %>
+        <!-- Rails Display Data From the Database End -->
+        </div>
+        <div class="fr pag mt20 mr20">      
+          <p class="bcolor5"><%= will_paginate @products %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="clear:both;" class="mb20"></div>
+<!--content结束-->

@@ -1,0 +1,22 @@
+<div>
+  <% if %>
+    <p id="notice"><%= flash[:alert] %></p>
+  <% end %>
+
+  <%= form_tag('/login') do %>
+    <fieldset>
+      <legend>登入后台</legend>
+      <div>
+        <%= label_tag :username, '帐号:' %>
+        <%= text_field_tag :username, params[:username] %>
+      </div>
+      <div>
+        <%= label_tag :password, '密码:' %>
+        <%= text_field_tag :password, params[:password] %>
+      </div>
+      <div>
+      <%= submit_tag "Login" %>
+      </div>
+    </fieldset>
+  <% end %>
+</div>

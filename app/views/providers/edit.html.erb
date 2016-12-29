@@ -1,0 +1,178 @@
+<!--content开始-->
+<style>
+  .field_with_errors{float:left;width:80%;margin-right:30px;}
+  .user_cont6 .user_sqbCon{float:left;}
+</style>
+<div class="content">
+    <div class="pageW bc mt20 ">
+        <div class="fr user_right">
+          <%= form_for(@provider) do |f| %>
+            <div class="fcolor5 user_right_w fl mb10">
+              供应商管理&nbsp;&gt;供应商申请&nbsp;&gt;<%= @provider.company_name %>
+            </div>
+            <div class="user_cont6 fcolor5 user_right_w fl bor4 pad10">
+                <ul>
+                    <li>
+                        <p class="user_sqbCon"><span class="fcolor_red">*</span>公司名称:</p>
+                        <%= f.text_field :company_name, class: 'user_input' %>
+                    </li>
+                    <li>
+                        <p class="user_sqbCon"><span class="fcolor_red">*</span>主营:</p>
+                        <%= f.text_field :category, class: 'user_input' %>
+                    </li>
+                    <li>
+                        <p class="user_sqbCon"><span class="fcolor_red">*</span>所在地:</p>
+                        <%= f.text_field :area, class: 'user_input' %>
+                    </li>
+                    <li>
+                        <p class="user_sqbCon"><span class="fcolor_red">*</span>详细地址:</p>
+                        <%= f.text_field :address, class: 'user_input' %>
+                    </li>
+                    <li>
+                        <p class="user_sqbCon"><span class="fcolor_red">*</span>主要联系人:</p>
+                        <%= f.text_field :contact_name, class: 'user_input' %>
+                    </li>
+                    <li>
+                        <p class="user_sqbCon"><span class="fcolor_red">*</span>职位:</p>
+                        <%= f.text_field :contact_title, class: 'user_input' %>
+                    </li>
+                    <li>
+                        <p class="user_sqbCon"><span class="fcolor_red">*</span>手机号码:</p>
+                        <%= f.text_field :mobile, class: 'user_input' %>
+                    </li>
+                    <li>
+                        <p class="user_sqbCon"><span class="fcolor_red">*</span>固定电话号码:</p>
+                        <%= f.text_field :telephone, class: 'user_input' %>
+                    </li>
+                    <li>
+                        <p class="user_sqbCon">QQ:</p>
+                        <%= f.text_field :qq, class: 'user_input' %>
+                    </li>
+                   
+                    <li>
+                       <p class="user_sqbCon">公司信息完善:</p>
+                       <%= f.text_area :company_information,
+                                  class: "user_input", 
+                                  style: "width: 60%; height:150px; border-radius: 10px;
+                                          resize: none; margin-top: 20px; padding: 20px;"
+                       %>
+                       <br>
+                    </li>
+                    <li style="border-bottom-color:#fff;height:202px;">
+                        <p class="user_sqbCon">相关照片:</p>
+                        <div class="ml70 user_po" style="height:100px;top:20px;">
+                            
+                          <div class="user_p user_pos">
+                            <div >
+                              <% company_image = f.object.photos.where(tag: "company").first.try(:image) %>
+                              <% if company_image.blank? %>
+                                <img id="company_pic_2" src='<%= image_url('com/register_04.jpg') %>' width="110" height="110"  />
+                              <% else %>
+                                <%= image_tag company_image.thumb.url, id: "company_pic_2", width: "110", height: "110" %>
+                              <% end %>
+                              <p class="tc">公司照片</p>
+                               </div>
+                                <div class="reg_p">
+                              <%= f.fields_for :photos do |p| %>
+				<% if "company" == p.object.tag %>
+				 <%= p.file_field :image,style: 'display:block;margin-top:35px;width:85px' %>
+                		 <%= p.hidden_field :tag, value: p.object.tag %>
+				<%end%>
+			      <%end%>
+                            </div>
+                          </div>
+
+                          <div class="user_p ml10">
+                            <div >
+                              <% license_image = f.object.photos.where(tag: "license").first.try(:image) %>
+                              <% if license_image.blank? %>
+                                <img id="company_pic_1" src='<%= image_url('com/register_04.jpg') %>' width="110" height="110" />
+                              <% else %>
+                                <%= image_tag license_image.thumb.url, id: "company_pic_1", width: "110", height: "110" %>
+                              <% end %>
+                              <p class="tc">公司营业执照</p>
+                            </div>
+                            <div class="mt10 ml10">
+                              <%= f.fields_for :photos do |p| %>
+			        <% if "license" == p.object.tag %>
+				  <%= p.file_field :image,style: 'display:block;margin-top:35px;width:85px' %>
+                		  <%= p.hidden_field :tag, value: p.object.tag %>
+				<%end%>
+			      <%end%>
+                              </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+              
+            </div>
+            <% if @provider.errors.any? %>
+              <div id="error_explanation">
+                <ul>
+                  <% @provider.errors.full_messages.each do |message| %>
+                    <li class= "tc"><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <div class="user_cont6 fcolor5 user_right_w fl bor4 pad10 mt10">  
+              <p class="user_sqbCon ml30">分配账号:</p><br>
+              <div class="fcolor5 bor4 pad10 mt10 ml30 mr30 h230">
+                <%= f.fields_for :user, User.create do |u| %>
+                  <div class="use ml30 mt30">
+                    <p class="user_sqbCon">
+                      <span class="fcolor_red">*</span>供应商账号
+                    </p>
+                      <% if User.find_by_provider_id(params[:id]) == nil %>
+                        <div>
+                          <%= u.text_field :username %>
+                        </div>
+			<div style="padding-top:50px">
+			  <p class="user_sqbCon">
+                            <span class="fcolor_red">*</span>登录密码
+                          </p>
+                          <div>
+                            <%= u.text_field :password %>
+                          </div>
+			</div>
+			<div class="tc">
+			 <%= f.hidden_field :status, value: '已审核' %>
+                      	 <%= f.submit '分配账号', 
+			   style: 'font-size:16px; color:#fff; border-radius:6px; background:#3eb692; width: 250px;margin-top:20px'
+		           %>
+			</div>
+                      <% else %>
+                        <%= u.text_field :username, 
+                                    value: User.find_by_provider_id(params[:id]).username,
+				    disabled: true
+                        %>
+ 			<%= u.hidden_field :password, value: '', disabled: true %>
+			 <p class="user_sqbCon" style="margin-top:12px">
+                        <span class="fcolor_red">*</span>登录密码
+                      </p>
+                      <div>
+		       <%= f.submit '重置密码', 
+			style: 'font-size: 16px;color: #fff;border-radius: 6px;
+			background: #3eb692;padding: 1px;margin-top: 10px;width: 100px' 
+		       %>
+		      </div>
+			 <div class="tc">
+                     
+  			<a style="font-size: 16px; color: #fff; border-radius: 6px; background: #3eb692; padding: 10px 50px; margin-right:6px"> 	
+			  <input type="submit" name="commit" value="保存" 
+			         style="font-size: 16px;color: #fff;border:none;background: #3eb692; width: 70px"></a>
+ 			<%= link_to '返回供应商列表', '/providers', 
+			  style:'font-size: 16px; color: #fff; border-radius: 6px; background: #3eb692; padding: 10px 35px;' %>             
+                      </div>
+                      <% end %>
+                  </div>
+                  <br>
+                <% end %>
+              </div>
+            </div>
+        </div>
+        <% end %>
+   </div>
+</div>
+<div style="clear:both;" class="mb20"></div>
+<!--content结束-->

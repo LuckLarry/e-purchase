@@ -1,0 +1,171 @@
+<!--content开始-->
+<div class="content">
+  <div class="pageW bc mt20 ">
+     <%= form_for(@product) do |f| %>
+       <div class="fr user_right">
+         <div class="fcolor5 user_right_w fl mb10">审核管理&nbsp;&gt;产品上架申请</div>
+           <div class="user_cont7 fcolor5 user_right_w fl bor4 pad10">
+              <ul>
+                <li>
+                  <p class="user_sqbCon">申请日期:</p>
+                      &nbsp;<%= @product.created_at.to_date %>
+                </li>
+                <li>
+                  <p class="user_sqbCon">申请的供应商:</p>
+                      &nbsp;<%= @product.provider.company_name %>
+                </li>
+                <li>
+                  <p class="user_sqbCon">受理状态:</p>
+                        &nbsp;<%= @product.status %>
+                </li>
+                <li>
+                  <p class="user_sqbCon">申请类型:</p>&nbsp;产品上架申请
+                </li>
+                <li>
+                  <p class="user_sqbCon fl ">产品信息:</p>
+                    <div class="bo fl ml20 bor5">
+                      <ul>
+                        <li>
+                          <p class="user_sqbCon">产品分类:</p>
+                                    &nbsp;&nbsp;
+                          <%= f.select :category, [ '瓷砖', '马赛克', '卫浴', '五金' ],
+                                                 :prompt => '产品分类'
+                                    %>
+                         </li>
+                         <li>
+                           <p class="user_sqbCon">产品状态:</p>
+                                    &nbsp;&nbsp;
+                           <%= f.text_field :product_status, class: 'user_input' %>
+                         </li>
+                         <li>
+                           <p class="user_sqbCon">产品名称:</p>
+                                    &nbsp;&nbsp;
+                            <%= f.text_field :name, class: 'user_input' %>
+                          </li>
+                          <li>
+                            <p class="user_sqbCon">产品型号:</p>
+                                    &nbsp;&nbsp;
+                            <%= f.text_field :number, class: 'user_input' %>
+                          </li>
+                          <li>
+                            <p class="user_sqbCon">产品价格:</p>
+                                    &nbsp;&nbsp;
+			      <span class="fcolor3">
+                                ￥<%= f.text_field :price, class: 'user_input' %>
+                              </span>
+                          </li>
+                          <li>
+                            <p class="user_sqbCon">起定量:</p>
+                                    &nbsp;&nbsp;
+                            <%= f.text_field :start_volume, class: 'user_input' %>
+                          </li>
+                          <li>
+                            <p class="user_sqbCon">供货量:</p>
+                                    &nbsp;&nbsp;
+                            <%= f.text_field :volume, class: 'user_input' %>
+                          </li>
+                          <li>
+                            <p class="user_sqbCon">品牌:</p>
+                                    &nbsp;&nbsp;
+                            <%= f.text_field :brand, class: 'user_input' %>
+                          </li>
+                          <li>
+                            <p class="user_sqbCon">原产地:</p>
+                                    &nbsp;&nbsp;
+                            <%= f.select :origin_id, [], :prompt => '原产地' %> 
+                          </li>
+                          <li>
+                            <p class="user_sqbCon">产品规格:</p>
+                                    &nbsp;&nbsp;
+                            <%= f.text_field :spec, class: 'user_input' %>
+                          </li>
+                          <li>
+                            <p class="user_sqbCon">产品图片:</p>
+                              <div class="ml70 user_po" style="height:100px;">
+                                 <div>
+                                         <% product_image = f.object.photos.where(tag: "Product_A").first.try(:image) %>
+                                         <% if product_image.blank? %>
+                                           <%= image_tag image_url("com/register_04.jpg") %>
+                                         <% else %>
+                                           <%= image_tag product_image.thumb.url, width: '80', height: '80' %>
+                                         <% end %>
+                                         <% product_image = f.object.photos.where(tag: "Product_B").first.try(:image) %>
+                                         <% if product_image.blank? %>
+                                           <%= image_tag image_url("com/register_04.jpg") %>
+                                         <% else %>
+                                           <%= image_tag product_image.thumb.url, width: '80', height: '80' %>
+                                         <% end %>
+                                         <% product_image = f.object.photos.where(tag: "Product_C").first.try(:image) %>
+                                         <% if product_image.blank? %>
+                                           <%= image_tag image_url("com/register_04.jpg") %>
+                                         <% else %>
+                                           <%= image_tag product_image.thumb.url, width: '80', height: '80' %>
+                                         <% end %>
+                                         <% product_image = f.object.photos.where(tag: "Product_D").first.try(:image) %>
+                                         <% if product_image.blank? %>
+                                           <%= image_tag image_url("com/register_04.jpg") %>
+                                         <% else %>
+                                           <%= image_tag product_image.thumb.url, width: '80', height: '80' %>
+                                         <% end %>
+                                         <% product_image = f.object.photos.where(tag: "Product_E").first.try(:image) %>
+                                         <% if product_image.blank? %>
+                                           <%= image_tag image_url("com/register_04.jpg") %>
+                                         <% else %>
+                                           <%= image_tag product_image.thumb.url, width: '80', height: '80' %>
+                                         <% end %>
+				  </div>
+				       <div style="float:left;margin-top:5px">
+                             		 <%= f.fields_for :photos do |p| %>
+					   <% if "Product_A" == p.object.tag %>
+				 	     <%= p.file_field :image,style: 'display:block;width:80px;float:left;margin-right:5px' %>
+					   <%end%>
+			      	   	 <%end%>
+                                       </div>
+				  </div>
+                                </li>
+                                <li class="mb20" style="border-bottom:1px solid #fff;">
+                                  <p class="user_sqbCon po">其他参数:</p>
+                                  <%= f.text_field :other, class: 'textarea1', style: 'font-size' %>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+               
+                    
+                </ul>
+                <div class="tc">
+    		            <li class="mb20">
+ 		                  <p class="user_sqbCon fl ">备注:</p>
+		                  <%= f.text_area :mark, class:'textarea1', placeholder: @product.mark %> 
+                      <br>
+                    </li>
+                    <%= f.hidden_field :status, value: '已上架' %>
+                    <%= f.submit "通过", style:
+                                          '
+                                           font-size: 16px;color: #fff;
+                                           border-radius: 6px;background: #3eb692;
+                                           padding: 10px 70px;
+                                          '
+                    %>
+                </div>
+                <!--
+                <div class="tc">
+                  <%#= form_for (@product) do |f| %>
+                    <%#= f.hidden_field :status, value: '未上架' %>
+                    <%#= f.submit "驳回", style:
+                                          '
+                                           font-size: 16px;color: #fff;
+                                           border-radius: 6px;background: #3eb692;
+                                           padding: 10px 70px;
+                                          '
+                    %>
+                  <%# end %>
+                </div>
+                -->
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>
+<div style="clear:both;" class="mb20"></div>
+<!--content结束-->

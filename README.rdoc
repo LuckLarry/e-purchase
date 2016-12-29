@@ -1,0 +1,22 @@
+== README
+
+rails g scaffold products category:string status:string name:string number:string unit:string price:string start_volume:string volume:string brand:string spec:string mark:string image:string
+
+rails g scaffold providers company_name:string category:string area:string address:string contact_name:string contact_title:string mobile:string telephone:string fax:string qq:string image:string
+
+rails g scaffold users username:string password_digest:string password:string mobile:string admin:boolean roles:string
+
+class Product < ActiveRecord::Base
+  belongs_to :provider
+  belongs_to :user
+end
+
+class Provider < ActiveRecord::Base
+  has_many :product
+  has_many :user
+end
+
+class User < ActiveRecord::Base
+  belongs_to :provider
+  has_many :product
+end

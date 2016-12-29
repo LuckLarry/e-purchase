@@ -1,0 +1,76 @@
+<div class="gol_header">
+    <div class="bcolor line1 gol_header_top1 fcolor1">
+        <div class="pageW bc">
+            <div class="line_h f15 fl">
+                欢迎来到e采购&nbsp;
+                <% if !session[:user_id] %>
+		<span>|</span> &nbsp;
+                  <%= link_to '立即登录', login_path %>
+                &nbsp;<span>|</span>&nbsp;
+                <%= link_to '申请入驻', new_provider_path %>
+                <% else %>,
+ 	  	    <% if User.find(session[:user_id]).admin %>
+                      <a href="/providers"><%= session[:username] %></a>
+		    <% else %>
+                      <a href="/company_information"><%= session[:username] %></a>
+		    <% end %>
+                 <span>|</span> &nbsp;
+                 <%= link_to '退出', logout_path, method: :delete %>
+                <% end %>
+            </div>
+            <div class="line_h f15 fr">
+                <span><a href="javascript:window.external.AddFavorite('http://www.51ecg.com','e采购')">收藏本站</a>
+                 </span>&nbsp;<span>|</span> &nbsp;全国热线:0757-82581702
+            </div>
+        </div>
+    </div>
+    <div class="w100 h60 mt20">
+        <div class="pageW bc fcolor1 ">
+            <div class="header_main fl">
+                <div class="fl header_w132 padr10">
+                  <a href="/">
+                    <img src="<%= image_url("header/logo.jpg") %>" alt="" width="132">
+                  </a>
+                </div>
+                <div class="fl header_w68 padt20 bor_lef padl10"><p>瓷砖采购</p><p>招标平台</p></div>
+            </div>
+            <div class="fr header_mainr">
+                <div class="header_sear fl">
+                    <form action=""  method="get">
+                        <input type="text" class="header_sear_wh bor2 mt13 fl padl10" placeholder="请输入招标商品名称">
+                            <input type="button" class="ser_but bcolor1 mt13 fl bor cur fcolor2" value="搜索">
+                    </form>
+                </div>
+                <div class="ml70 header_user fl mt13">
+                    <span>
+                      <img src="<%= image_url("header/header_user.jpg") %>" alt="" width="">
+                    </span>
+                </div>
+                <div class="header_user1 fl mt13">
+		  <% if !session[:user_id] %>
+                    <a href="/login">个人中心</a>
+		  <% else %>
+	  	    <% if User.find(session[:user_id]).admin %>
+                      <a href="/providers">个人中心</a>
+		    <% else %>
+                      <a href="/company_information">个人中心</a>
+		    <% end %>
+	     	  <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w100 h60 bcolor1 mt20">
+        <div class="pageW bc nav">
+            <ul>
+                <a href="/"><li>首页</li></a>
+                <a href="/Tender"><li>招标专区</li></a>
+                <a href="/NewProvider"><li>供应商招募</li></a>
+                <a href="/NewProduct"><li>新品</li></a>
+                <a href="/OldProduct"><li>尾货</li></a>
+                <a href="/Parners"><li>战略合作伙伴</li></a>
+                <a href="/AboutE"><li>关于e采购</li></a>
+            </ul>
+        </div>
+    </div>
+</div>

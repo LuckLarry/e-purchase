@@ -1,0 +1,101 @@
+<!--content开始-->
+<font color="#3c763d" size="5"><p class="tc" id="notice"><%= notice %></p></font>
+<div class="content">
+  <div class="pageW bc mt20">
+        <div class="fr user_right">
+            <div class="fcolor5 user_right_w fl">产品发布</div>
+            <div class="user_cont2 fcolor5 user_right_w fl bor4 pad10">
+              <ul>
+              <%= form_for(@product) do |f| %>
+                <li>
+                  <p class="user_sqbCon">
+                    <%= f.label :产品分类 %><br></p>
+                    <%= f.select :category, [ '瓷砖', '马赛克', '卫浴', '五金' ], 
+                                 :prompt => '产品分类' %>
+                </li>
+                <li>
+                  <p class="user_sqbCon">
+                    <%= f.label :产品状态 %><br></p>
+                    <%= f.select :product_status, [ '常规', '新品', '尾货' ],
+                                 :prompt => '产品状态' %>
+                </li>
+                <li>
+                  <p class="user_sqbCon"><%= f.label :产品名称 %><br></p>
+                  <%= f.text_field :name, class: 'user_input' %>
+                </li>
+                <li>
+                  <p class="user_sqbCon"><%= f.label :产品型号 %><br></p>
+                  <%= f.text_field :number, class: 'user_input' %>
+                </li>
+                <li>
+                  <p class="user_sqbCon"><%= f.label :产品单位 %><br></p>
+                  <%= f.text_field :unit, class: 'user_input' %>
+                </li>
+                <li>
+                  <p class="user_sqbCon"><%= f.label :产品价格 %><br></p>
+                  <%= f.text_field :price, class: 'user_input' %>
+                </li>
+                <li>
+                  <p class="user_sqbCon"><%= f.label :起订量 %><br></p>
+                  <%= f.text_field :start_volume, class: 'user_input' %>
+                </li>
+                <li>
+                  <p class="user_sqbCon"><%= f.label :供货量 %><br></p>
+                  <%= f.text_field :volume, class: 'user_input' %>
+                </li>
+                <li>
+                  <p class="user_sqbCon"><%= f.label :品牌 %><br></p>
+                  <%= f.text_field :brand, class: 'user_input' %>
+                </li>
+                <li>
+                  <p class="user_sqbCon"><%= f.label :原产地 %><br></p>
+                  <%= f.select :origin_id, [], :prompt => '原产地' %> 
+                </li>
+                <li style="border-bottom-color:#fff;">
+                  <div>
+                    <p class="user_sqbCon"><%= f.label :产品规格%><br></p>
+                    <%= f.text_field :spec, class: 'user_input' %>
+                  </div>
+                  <br>
+                  <div>
+                    <p class="user_sqbCon"><%= f.label :其他参数 %><br></p>
+                    <%= f.text_area :other, class: 'user_input', placeholder: "例如 颜色:红色，质面:哑面，尺寸:300×300mm", style: "width: 55%; height: 150px; border-radius:10px; resize: none; margin-top: 20px; padding: 20px" %>
+                  </div>
+                  <p class="user_sqbCon" style="margin-left: 100px;">提示:参数种类与详细参数用“：”隔开，参数之间用“，”隔开</p><br>
+                  <div>
+                    <p class="user_sqbCon"><%= f.label :相关照片 %><br></p>
+                  </div>
+                  <div class="ml70 user_po">
+                    <%= f.fields_for :photos do |p| %>
+                      <div style="margin-top: 17px;">
+                        <%= p.file_field :image %>
+                        <%= p.hidden_field :tag, value: p.object.tag %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <div class="tc">
+                    <%= f.hidden_field :status, value: '未审核' %>
+                    <%= f.hidden_field :provider_id, value: @provider_id %>
+                    <%= f.submit "提交上架申请",
+                        style: 
+                          '
+                            font-size: 16px; color: #fff;
+                            border-radius: 6px; background: #3eb692;
+                            padding: 10px 70px;
+                          '
+                    %>
+                  </div>
+                  <div class="tc mt20">
+                    <p>供应商提交产品上架后楼兰采购部专员审核通过产品会展示在首页</p>
+                  </div>
+                </div>
+                </li>
+              <% end %>
+                </ul>
+              </div>
+           </div>
+       </div>
+    </div>
+</div>
+<div class="mb20 cr"></div>
+<!--content结束-->

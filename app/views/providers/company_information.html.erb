@@ -1,0 +1,78 @@
+    <div class="pageW bc mt20 ">
+        <div class="fr user_right">
+            <div class="fcolor5 user_right_w fl">账号管理&nbsp;&gt;&nbsp;企业信息</div>
+            <div class="user_cont2 fcolor5 user_right_w fl bor4 pad10 mt10">
+                <ul>
+                    <li>
+                        <p class="user_sqbCon">公司名称:&nbsp;&nbsp;<%= @provider.company_name %></p>
+                    </li>
+                    <li>
+                        <p class="user_sqbCon">主营:&nbsp;&nbsp;<%= @provider.category %></p>
+                    </li>
+                    <li>
+                        <p class="user_sqbCon">所在地:&nbsp;&nbsp;<%= @provider.area %></p>
+                    </li>
+                    <li>
+                        <p class="user_sqbCon">详细地址:&nbsp;&nbsp;<%= @provider.address %></p>
+                    </li>
+                    <li>
+                        <p class="user_sqbCon">主要联系人:&nbsp;&nbsp;<%= @provider.contact_name %></p>
+                    </li>
+                    <li>
+                        <p class="user_sqbCon">职位:&nbsp;&nbsp;<%= @provider.contact_title %></p>
+                    </li>
+                    <li>
+                        <p class="user_sqbCon">手机号码:&nbsp;&nbsp;<%= @provider.mobile %></p>
+                    </li>
+                    <li>
+                        <p class="user_sqbCon">固定电话号码:&nbsp;&nbsp;<%= @provider.telephone %></p>
+                    </li>
+                    <li>
+                        <p class="user_sqbCon">传真机:&nbsp;&nbsp;<%= @provider.fax %></p>
+                    </li>
+                    <li>
+                        <p class="user_sqbCon">QQ:&nbsp;&nbsp;<%= @provider.qq %></p>
+                    </li>
+                     <li style="border-bottom-color:#fff;height:202px;">
+                        <p class="user_sqbCon">相关照片:</p>
+                        <div class="ml70 user_po" style="height:100px;">
+                            <div class="user_p">
+                              <% company_image = @provider.photos.where(tag: "company")
+                                                          .first.try(:image) %>
+                              <% if company_image.blank? %>
+                                <img id="company_pic_1" 
+                                src='<%= image_url("com/register_04.jpg") %>'
+                                width="110" height="110" />
+                              <% else %>
+                                <%= image_tag company_image.thumb.url,
+                                id: "company_pic_2", width: "110", height: "110" %>
+                              <% end %>
+                              <p class="tc">公司照片</p>
+                            </div>
+                            <div class="user_p user_pos ml10">
+                              <% license_image = @provider.photos.where(tag: "license")
+                                                          .first.try(:image) %>
+                              <% if license_image.blank? %>
+                                <img id="company_pic_1"
+                                 src='<%= image_url("com/register_04.jpg") %>'
+                                 width="110" height="110" />
+                              <% else %>
+                                <%= image_tag license_image.thumb.url,
+                                id: "company_pic_1", width: "110", height: "110" %>
+                              <% end %>
+                              <p class="tc">公司营业执照</p>
+                            </div>
+                        </div>
+                    </li>
+                    <!--
+                    <div class="cur user_submit"><span>编辑</span></div>
+                    -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    
+</div>
+<div style="clear:both;" class="mb20"></div>
+<!--content结束-->

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>e采购---瓷砖行业内采购招标平台</title>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', '/assets/common', '/assets/index' %>
+  
+  <%= csrf_meta_tags %>
+</head>
+<body class="<%= params[:controller] %> public">
+  <%= render "layouts/header" %>
+  <% if params[:controller] == 'main' %>
+	<% else %>
+  <% if session[:user_id] !=nil %>
+  <% if User.find(session[:user_id]).admin %>
+    <%= render "layouts/provider_menu", except: [:main,:edit] %>
+  <% else %>
+	 <%= render "layouts/purchase_menu" %>
+  <% end %>
+  <% end %>
+  <% end %>
+  <%= yield %>
+  <%= render "layouts/footer" %>
+</body>
+</html>

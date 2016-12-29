@@ -1,0 +1,114 @@
+@charset "UTF-8";
+
+.conte1 {
+color:blue;
+}
+
+.content {
+background:#f6f6f6;
+width:100%;
+}
+
+.content .w_left {
+width:300px;
+height:500px;
+}
+
+.content .w_left .top_1 {
+height:39px;
+width:300px;
+line-height:40px;
+overflow:hidden;
+}
+
+.content .w_left .top_2 {
+width:300px;
+}
+
+.content .w_left .top_2 li {
+font-size:14px;
+line-height:45px;
+border-bottom:1px dashed #787878;
+padding:0 20px;
+overflow:hidden;
+white-space:nowrap;
+}
+
+.content .w_left .top_2 li a{
+display:block;
+overflow:hidden;
+text-overflow:ellipsis;
+}
+.content .w_right {
+width:890px;
+}
+
+.content .dynamic {
+height:90px;
+background:image_url("com/backgro.jpg") repeat-x;
+}
+
+.content .dynamic span {
+position:relative;
+top:30px;
+}
+
+.content .dynamic2 {
+height:559px;
+}
+
+.content .dynamic2 .nav1 {
+height:50px;
+background:#ededed;
+}
+
+.content .dynamic2 .nav1 span {
+float:left;
+width:168px;
+line-height:50px;
+padding:0 10px;
+}
+
+.content .dynamic2 .nav2 {
+height:511px;
+background:#fff;
+}
+
+.content .dynamic2 .nav2 li {
+line-height:50px;
+border-bottom:1px dashed #c3c3c3;
+height:50px;
+margin:0 10px;
+}
+
+.content .dynamic2 .nav2 li span {
+width:167px;
+float:left;
+text-overflow:ellipsis;
+overflow:hidden;
+}
+
+.content .dynamic2 .nav2 li .actt {
+background:#aeaeae;
+border-radius:4px;
+color:#fff;
+line-height:30px;
+width:100px;
+position:relative;
+top:10px;
+}
+
+.content .shop_1 {
+height:717px;
+}
+
+.content .shop_1 .shop_nv {
+width:236px;
+float:left;
+border:1px solid #e6e6e6;
+padding:80px 0;
+}
+
+.content .shop_1 .shop_nv img {
+display:inline;
+}

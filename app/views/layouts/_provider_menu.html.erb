@@ -1,0 +1,47 @@
+
+<div id="nav" class="pageW bc mt20">
+    <div class="fl user_left ">
+      <a href="/products">
+        <div class="fl user_top bor2 mt20">
+          <div class="user_top2 fcolor4 tc">产品管理</div>
+          </div>
+        </a>
+      <a>
+      <div class="fl user_top bor2 mt20">
+          <div class="user_top2 tc  fcolor4">审核管理</div>
+      </div></a>
+      <a href="/providers">
+        <div class="fl user_top bor2 mt20">
+          <div class="user_top2 tc  fcolor4">供应商管理</div>
+        </div>
+      </a>
+      </div>
+</div>
+<script>
+
+
+            var nav=document.getElementById("nav");
+            var links=nav.getElementsByTagName("a");
+            var currenturl=window.location.href;/*获取当前页面的地址*/
+            for(i=0;i<links.length;i++){
+                var url=links[i].getAttribute("href");/*获取链接的href值*/
+		if(currenturl.indexOf('edit')!=-1){/*如果链接的href值在当前页面地址中有匹配*/
+                   links[1].getElementsByTagName("div")[0].className="bcolor5 fl user_top bor2 mt20";
+                   links[1].getElementsByTagName("div")[1].className="fcolor2 user_top2 tc";
+                    var linktext=links[i].lastChild.nodeValue.toLowerCase();  
+                    document.body.setAttribute("id",linktext);
+                
+break;
+                }
+                if(currenturl.indexOf(url)!=-1 &&currenturl.indexOf('edit')==-1){/*如果链接的href值在当前页面地址中有匹配*/
+                   links[i].getElementsByTagName("div")[0].className="bcolor5 fl user_top bor2 mt20";
+                   links[i].getElementsByTagName("div")[1].className="fcolor2 user_top2 tc";
+                    var linktext=links[i].lastChild.nodeValue.toLowerCase();  
+                    document.body.setAttribute("id",linktext);
+                }
+            }
+                
+
+</script>
+
+

@@ -1,0 +1,61 @@
+<%= form_for(@provider) do |f| %>
+  <% if @provider.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@provider.errors.count, "error") %> prohibited this provider from being saved:</h2>
+
+      <ul>
+      <% @provider.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :公司名称 %><br>
+    <%= f.text_field :company_name %>
+  </div>
+  <div class="field">
+    <%= f.label :主营 %><br>
+    <%= f.text_field :category %>
+  </div>
+  <div class="field">
+    <%= f.label :所在地区 %><br>
+    <%= f.text_field :area %>
+  </div>
+  <div class="field">
+    <%= f.label :详细地址 %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :主要联系人 %><br>
+    <%= f.text_field :contact_name %>
+  </div>
+  <div class="field">
+    <%= f.label :职位 %><br>
+    <%= f.text_field :contact_title %>
+  </div>
+  <div class="field">
+    <%= f.label :手机号码 %><br>
+    <%= f.text_field :mobile %>
+  </div>
+  <div class="field">
+    <%= f.label :固定电话号码 %><br>
+    <%= f.text_field :telephone %>
+  </div>
+  <div class="field">
+    <%= f.label :传真机 %><br>
+    <%= f.text_field :fax %>
+  </div>
+  <div class="field">
+    <%= f.label :QQ号 %><br>
+    <%= f.text_field :qq %>
+  </div>
+  <div class="field">
+    <%= f.label :相关照片 %><br>
+    <%= f.text_field :image %>
+  </div>
+  <div class="actions">
+    <%= f.submit "提交入驻申请"%>
+  </div>
+<% end %>
